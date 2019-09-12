@@ -1,0 +1,31 @@
+﻿/* the styles for the cart */
+#lstcart { 
+    height: 135px;
+    width: 300px;
+    margin-bottom: 1em;
+    float: left;
+    padding: .5em;
+}
+    #lstcart option {
+        margin-bottom: .25em;
+    }
+ the styles for the buttons to the right of the cart 
+#btnremove, #btnempty {
+    margin-left: 1em;
+    width: 10em;
+}
+#btnremove {
+    margin-bottom: 1em;
+}
+ the styles for the div and buttons below the cart 
+#shopbuttons {
+    clear: both;
+}
+#btncontinue {
+    margin-right: 1em;
+}
+ the style for the label at the bottom of the page
+   that displays error messages 
+#lblmessage {
+    color: green;
+}

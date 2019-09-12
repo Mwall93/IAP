@@ -1,0 +1,83 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="Site" ClientIDMode="Static" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Restraunt Website</title>
+    <link href="Styles/Master.css" rel="stylesheet" />
+    <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <asp:ContentPlaceHolder id="headPlaceHolder" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <header>
+        <%-- Update to restaurant banner... --%>
+        <img src="Images/banner.jpg" alt="Honey Cakes Café Store banner" /><br />
+    </header>
+    <%--<aside>
+        <nav>
+            <ul>
+                <li><asp:HyperLink NavigateUrl="~/Login.aspx" runat="server">Login</asp:HyperLink></li>
+                <li><asp:HyperLink NavigateUrl="~/Order.aspx" runat="server">Home</asp:HyperLink></li>
+                <li><asp:HyperLink NavigateUrl="~/Menu.aspx" runat="server">Our Menu</asp:HyperLink></li>
+                <li><asp:HyperLink NavigateUrl="~/Cart.aspx" runat="server">Your Cart</asp:HyperLink></li>
+                <%-- CHANGE Display if User == Admin --%>
+                
+                <%--<li><asp:HyperLink NavigateUrl="" runat="server">Services</asp:HyperLink></li>--%>
+                <%--<li><asp:HyperLink NavigateUrl="" runat="server">About</asp:HyperLink></li>--%>
+         <%--   </ul>
+        </nav>
+    </aside>--%>
+
+            <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+                <%-- Change to something useful --%>
+              <a class="navbar-brand" href="order.aspx">Honey Cakes Café</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li><a href="Order.aspx">Menu</a></li>
+              <li><a href="Cart.aspx">Basket</a></li>
+              
+                 <% if (Session["Id"] != null)
+                    { %>
+                        <li><a href="UserDetails.aspx">Profile</a></li>
+                        <li><a href="MyOrders.aspx">My Orders</a></li>
+                     <% }%>
+              
+                 <% if (Session["Admin"] != null)
+                     { %>
+                          <li><a href="EditUsers.aspx">Edit Users</a></li>
+                         <li><a href="EditMenu.aspx">Edit Menu</a></li>
+                         <li><a href="EditOrders.aspx">Edit Orders</a></li>
+                    <% }%>
+                <% if (Session["Id"] == null) { %>
+                     <li><a href="login.aspx">Login</a></li>
+              <% } else { %>
+                     <li><a href="logout.aspx">Logout</a></li>
+             <% } %>
+            </ul>
+          </div>
+        </nav>
+      <section>
+        <form id="form" runat="server">
+            <%--a label within an h1 element that will be exposed--%>
+            <h1><asp:Label ID="lblH1" runat="server"></asp:Label></h1>
+
+            <asp:ContentPlaceHolder id="formPlaceHolder" runat="server">        
+            </asp:ContentPlaceHolder> 
+        </form>
+    </section>   
+    <footer> 
+        <asp:ContentPlaceHolder id="footerPlaceHolder" runat="server">
+            <%--the default content for the footer that can be overridden--%>  
+            <%-- CHANGE TO SOMETHING USEFUL (Currently Open?) --%>
+            <asp:Label ID="lblDaysUntilMyRestaurant" runat="server"></asp:Label>          
+        </asp:ContentPlaceHolder> 
+    </footer>     
+</body>
+</html>
